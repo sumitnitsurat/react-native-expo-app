@@ -1,17 +1,11 @@
 {
-  "name": "SmartFit",
-  "displayName": "SmartFit",
-  "expo": {
     "name": "SmartFit",
-    "slug": "expo-template-bare",
-    "version": "1.0.0",
-    "platforms": [
-      "ios",
-      "android",
-      "web"
-    ],
-    "assetBundlePatterns": [
-      "**/*"
-    ]
-  }
+    "displayName": "SmartFit",
+    "expo": {
+        "name": "SmartFit",
+        "slug": "expo-template-bare",
+        "version": "1.0.0",
+        "platforms": ["ios", "android", "web"],
+        "assetBundlePatterns": ["**/*"]
+    }
 }

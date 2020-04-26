@@ -1,10 +1,10 @@
 {
-  "devToolsPort": 19002,
-  "expoServerPort": 19000,
-  "packagerPort": 19001,
-  "packagerPid": 88288,
-  "expoServerNgrokUrl": "https://9g-rfd.sumit-c.facts.exp.direct",
-  "packagerNgrokUrl": "https://packager.9g-rfd.sumit-c.facts.exp.direct",
-  "ngrokPid": 88312,
-  "webpackServerPort": 19006
+    "devToolsPort": 19002,
+    "expoServerPort": null,
+    "packagerPort": null,
+    "packagerPid": null,
+    "expoServerNgrokUrl": null,
+    "packagerNgrokUrl": null,
+    "ngrokPid": null,
+    "webpackServerPort": null
 }
