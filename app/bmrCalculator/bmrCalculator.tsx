@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, SafeAreaView,  } from "react-native";
 import { Slider, Button, Icon, CheckBox, Tile } from 'react-native-elements';
 import { ScrollView } from "react-native-gesture-handler";
 import {BmiIndicator} from "./bmiIndicator";
+import {CustomText} from "../common/CustomText";
 
 const bmiColorStyle = (bmi) => {
     switch(true) {
@@ -46,7 +47,7 @@ export const BmrCalculator = () => {
     return (
         <SafeAreaView style={styles.container}>
         <ScrollView >
-            <Text style={{ fontWeight: "600", fontSize: 24, textAlign: "center" }}>GET YOUR BMR</Text>
+            <CustomText style={{ fontWeight: "600", fontSize: 24, textAlign: "center" }}>GET YOUR BMR</CustomText>
             <Icon type="font-awesome" name="male" size={55} color="#4863A0" />
             <View style={{ marginTop: 20 }}>
                 <View style={{ flexDirection:'row',alignItems:'flex-start',justifyContent:'space-around'}}>
@@ -73,13 +74,13 @@ export const BmrCalculator = () => {
                         minimumValue={20}
                         maximumValue={300}
                         step={1}
-                        thumbStyle={{ height: 40, backgroundColor: "#2B547E" }}
-                        trackStyle={{ height: 20 }}
-                        minimumTrackTintColor="#151B8D"
+                        thumbStyle={styles.thumb}
+                        trackStyle={{ height: 10 }}
+                        minimumTrackTintColor="#4b4a67"
                         maximumTrackTintColor="#ADD8E6"
                         onValueChange={value => setHeight(value)}
                     />
-                    <Text style={{ fontWeight: "600" }}>Height: {height} cm/ {Math.floor(heightInFoot)}' {decimalTwoPoints((heightInFoot % 1)*12)}''</Text>
+                    <CustomText style={{ fontWeight: "600" }}>Height: {height} cm/ {Math.floor(heightInFoot)}' {decimalTwoPoints((heightInFoot % 1)*12)}''</CustomText>
                 </View>
                 <View style={{ padding: 10 }}>
                     <Slider
@@ -87,13 +88,13 @@ export const BmrCalculator = () => {
                         minimumValue={10}
                         maximumValue={200}
                         step={.5}
-                        thumbStyle={{ height: 40, backgroundColor: "#2B547E" }}
-                        trackStyle={{ height: 20 }}
-                        minimumTrackTintColor="#151B8D"
+                        thumbStyle={styles.thumb}
+                        trackStyle={{ height: 10 }}
+                        minimumTrackTintColor="#4b4a67"
                         maximumTrackTintColor="#ADD8E6"
                         onValueChange={value => setWeight(value)}
                     />
-                    <Text style={{ fontWeight: "600" }}>Weight: {weight} kg/ {decimalTwoPoints(weight * 2.205)} lbs</Text>
+                    <CustomText style={{ fontWeight: "600" }}>Weight: {weight} kg/ {decimalTwoPoints(weight * 2.205)} lbs</CustomText>
                 </View>
                 <View style={{ padding: 10 }}>
                     <Slider
@@ -101,26 +102,26 @@ export const BmrCalculator = () => {
                         maximumValue={100}
                         step={1}
                         animationConfig={{toValue: 1, duration: 100}}
-                        thumbStyle={{ height: 40, backgroundColor: "#2B547E" }}
-                        trackStyle={{ height: 20 }}
-                        minimumTrackTintColor="#151B8D"
+                        thumbStyle={styles.thumb}
+                        trackStyle={{ height: 10 }}
+                        minimumTrackTintColor="#4b4a67"
                         maximumTrackTintColor="#ADD8E6"
                         onValueChange={value => setAge(value)}
                     />
-                    <Text style={{ fontWeight: "600" }}>Age: {age} years</Text>
+                    <CustomText style={{ fontWeight: "600" }}>Age: {age} years</CustomText>
                 </View>
                 <View style={{ padding: 10 }}>
                     <Slider
                         value={walk}
                         maximumValue={50}
                         step={1}
-                        thumbStyle={{ height: 40, backgroundColor: "#2B547E" }}
-                        trackStyle={{ height: 20 }}
-                        minimumTrackTintColor="#151B8D"
+                        thumbStyle={styles.thumb}
+                        trackStyle={{ height: 10 }}
+                        minimumTrackTintColor="#4b4a67"
                         maximumTrackTintColor="#ADD8E6"
                         onValueChange={value => setWalk(value)}
                     />
-                    <Text style={{ fontWeight: "600" }}>Walking: {walk} hrs/week</Text>
+                    <CustomText style={{ fontWeight: "600" }}>Walking: {walk} hrs/week</CustomText>
                 </View>
             </View>
             <View style={{ padding: 10, marginTop: 20 }}>
@@ -134,10 +135,10 @@ export const BmrCalculator = () => {
                 />
             </View>
             <View style={{margin: 10}}>
-            {!!userBMR && <Text style={{fontSize: 26}}><Text style={{fontWeight: '600'}}>BMR:</Text> {userBMR} calories/day</Text>}
+            {!!userBMR && <CustomText style={{fontSize: 26}}><CustomText style={{fontWeight: '600'}}>BMR:</CustomText> {userBMR} calories/day</CustomText>}
             </View>
             <View style={{margin: 10}}>
-            {!!userBMI && <Text style={{fontSize: 26}}><Text style={{fontWeight: '600'}}>BMI:</Text> <Text style={{color: bmiTextColor}}>{userBMI}</Text></Text>}
+            {!!userBMI && <CustomText style={{fontSize: 26}}><CustomText style={{fontWeight: '600'}}>BMI:</CustomText> <CustomText style={{color: bmiTextColor}}>{userBMI}</CustomText></CustomText>}
             </View>
             <BmiIndicator />
         </ScrollView>
@@ -149,9 +150,10 @@ const styles = StyleSheet.create({
     container: { 
         flex: 1, 
         alignItems: 'stretch', 
-        justifyContent: 'flex-start', 
-        marginTop: 100, 
-        marginLeft: 10, 
-        marginRight: 10 
+        justifyContent: 'space-around',
+        backgroundColor: "#fff"
     },
+    thumb: {
+        height: 30, width: 30, borderRadius: 50, borderWidth: 10, borderColor: "#065E9F", backgroundColor: "#fff" 
+    }
   });

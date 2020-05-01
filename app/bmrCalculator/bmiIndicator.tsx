@@ -1,32 +1,33 @@
 import * as React from "react";
 import { View, Text, StyleSheet,  } from "react-native";
+import {CustomText} from "../common/CustomText";
 
 export const BmiIndicator = () => (
     <>
-    <Text style={{fontSize: 18, padding: 5, alignSelf: "center", fontWeight: "800"}}>BMI Indicator</Text>
+    <CustomText style={{fontSize: 18, padding: 5, alignSelf: "center", fontWeight: "800"}}>BMI Indicator</CustomText>
     <View style={{flexDirection: "row", padding: 5}}>
-        <View style={[styles.bmiTiteContainer, styles.bmiUnderWeightColor]}>
-            <Text style={{color: "#fff", fontSize: 10, fontWeight: "600"}}>Underweight </Text>
-            <Text style={{color: "#fff", fontWeight: "500"}}>{'<'} 18.5</Text>
+        <View style={[styles.bmiTitleContainer, styles.bmiUnderWeightColor]}>
+            <CustomText style={{color: "#fff", fontSize: 10, fontWeight: "600"}}>Underweight </CustomText>
+            <CustomText style={{color: "#fff", fontWeight: "500"}}>{'<'} 18.5</CustomText>
         </View>
-        <View style={[styles.bmiTiteContainer, styles.bmiHealthyColor]}>
-            <Text style={{color: "#fff", fontSize: 10, fontWeight: "600"}}>Healthy </Text>
-            <Text style={{color: "#fff", fontWeight: "500"}}>18.5 {'-'} 25</Text>
+        <View style={[styles.bmiTitleContainer, styles.bmiHealthyColor]}>
+            <CustomText style={{color: "#fff", fontSize: 10, fontWeight: "600"}}>Healthy </CustomText>
+            <CustomText style={{color: "#fff", fontWeight: "500"}}>18.5 {'-'} 25</CustomText>
         </View>
-        <View style={[styles.bmiTiteContainer, styles.bmiOverWeightColor]}>
-            <Text style={{color: "#fff", fontSize: 10, fontWeight: "600"}}>Overweight </Text>
-            <Text style={{color: "#fff", fontWeight: "500"}}>25 {'-'} 30</Text>
+        <View style={[styles.bmiTitleContainer, styles.bmiOverWeightColor]}>
+            <CustomText style={{color: "#fff", fontSize: 10, fontWeight: "600"}}>Overweight </CustomText>
+            <CustomText style={{color: "#fff", fontWeight: "500"}}>25 {'-'} 30</CustomText>
         </View>
-        <View style={[styles.bmiTiteContainer, styles.bmiObeseColor]}>
-            <Text style={{color: "#fff", fontSize: 10, fontWeight: "600"}}>Obese </Text>
-            <Text style={{color: "#fff", fontWeight: "500"}}>{'>'} 30</Text>
+        <View style={[styles.bmiTitleContainer, styles.bmiObeseColor]}>
+            <CustomText style={{color: "#fff", fontSize: 10, fontWeight: "600"}}>Obese </CustomText>
+            <CustomText style={{color: "#fff", fontWeight: "500"}}>{'>'} 30</CustomText>
         </View>
     </View>
     </>
 );
 
 const styles = StyleSheet.create({
-    bmiTiteContainer : {
+    bmiTitleContainer : {
         borderRadius: 2, 
         alignItems: "center", 
         justifyContent: "center", 

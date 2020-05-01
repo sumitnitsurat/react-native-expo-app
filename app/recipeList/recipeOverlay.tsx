@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 import { StyleSheet, Text, View, Animated, TouchableOpacity } from 'react-native';
 import { Image } from 'react-native-elements';
 import {RecipeIcon} from "../constant/recipeIcon";
+import {CustomText} from "../common/CustomText";
 
 export const RecipeOverlay = ({ recipe }: {recipe: any}) => {
 
@@ -19,24 +20,24 @@ export const RecipeOverlay = ({ recipe }: {recipe: any}) => {
                 style={{ width: 20, height: 20, marginRight: 5 }}
                 source={type}
               />
-              <Text style={{ textAlign: "center", marginTop: 8, fontSize: 15, fontWeight: '600', color: "#3090C7" }}>{recipe.name}</Text>
+              <CustomText style={{ textAlign: "center", marginTop: 8, fontSize: 15, fontWeight: '600', color: "#3090C7" }}>{recipe.name}</CustomText>
             </View>
-            <Text style={styles.serving}>Serving {recipe.quantity} {recipe.quantity > 1  ? 'g' : 'unit'}</Text>
-            <Text style={{margin: 3, fontSize: 11}}>
-              <Text style={{ fontWeight: '600'}}>
+            <CustomText style={styles.serving}>Serving {recipe.quantity} {recipe.quantity > 1  ? 'g' : 'unit'}</CustomText>
+            <CustomText style={{margin: 3, fontSize: 11}}>
+              <CustomText style={{ fontWeight: '600'}}>
               Calories:
-              </Text> 
+              </CustomText> 
               {recipe.calories} cal
-            </Text>
-            <Text style={{margin: 3,fontSize: 11 }}> 
-              <Text style={{ fontWeight: '600'}}>
+            </CustomText>
+            <CustomText style={{margin: 3,fontSize: 11 }}> 
+              <CustomText style={{ fontWeight: '600'}}>
               Protein: 
-            </Text> {recipe.protein} g</Text>
-            <Text style={{margin: 3,fontSize: 11 }}>
-              <Text style={{ fontWeight: '600' }}>
+            </CustomText> {recipe.protein} g</CustomText>
+            <CustomText style={{margin: 3,fontSize: 11 }}>
+              <CustomText style={{ fontWeight: '600' }}>
                 Total Fat: 
-              </Text> {recipe.fat} g
-            </Text>
+              </CustomText> {recipe.fat} g
+            </CustomText>
         </>
     );
   }

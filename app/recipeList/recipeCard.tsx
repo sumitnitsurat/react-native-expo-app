@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 import { StyleSheet, Text, View, Animated, TouchableOpacity } from 'react-native';
 import { Image } from 'react-native-elements';
 import { RecipeIcon } from "../constant/recipeIcon";
+import {CustomText} from "../common/CustomText";
 
 export const RecipeCard = ({ item, setOverlayAction }: { item: any, setOverlayAction: (item: any) => void }) => {
   const animatedValue = new Animated.Value(0);
@@ -56,35 +57,39 @@ export const RecipeCard = ({ item, setOverlayAction }: { item: any, setOverlayAc
       <>
         <Animated.View style={[styles.cardContainerFront, frontAnimatedStyle, styles.cardWithShadow]}>
           <Image
-            style={{ width: "100%", height: 140 }}
+            style={{ width: "100%", height: 100 }}
             resizeMode='contain'
             source={RecipeIcon[item.id]}
           />
           <View style={{ flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center' }}>
-            <Image
-              style={{ width: 20, height: 20, marginRight: 5 }}
+            <CustomText style={{ textAlign: "center", marginTop: 8, fontSize: 15, color: "#A52A2A" }}>{item.name}</CustomText>
+          </View>
+          <View style={{flex: 1, flexDirection: "row", padding: 5, justifyContent: "space-around"}}>
+          <Image
+              style={{ width: 15, height: 15 }}
               source={type}
             />
-            <Text style={{ textAlign: "center", marginTop: 8, fontSize: 15, fontWeight: '600', color: "#3090C7" }}>{item.name}</Text>
-          </View>
+              <CustomText style={{ textAlign: "left", fontSize: 12 }}>Unit: {item.quantity} {item.unit}</CustomText>
+              <CustomText style={{ textAlign: "left", fontSize: 12 }}>Cal: {item.calories}</CustomText>
+            </View>
         </Animated.View>
         <Animated.View style={[backAnimatedStyle, styles.cardContainerFront, styles.cardContainerBack]}>
-          <Text style={{ textAlign: "center", marginTop: 8, fontSize: 15, fontWeight: '600', color: "#3090C7", fontFamily: "System" }}>{item.name} (Serving {item.quantity})</Text>
-          <Text style={{ margin: 3, fontSize: 11 }}>
-            <Text style={{ fontWeight: '600' }}>
+          <CustomText style={{ textAlign: "center", marginTop: 8, fontSize: 15, fontWeight: '600', color: "#3090C7", fontFamily: "System" }}>{item.name} (Serving {item.quantity})</CustomText>
+          <CustomText style={styles.textContainerStyle}>
+            <CustomText style={{ fontWeight: '600' }}>
               Calories:
-              </Text>
+              </CustomText>
             {item.calories} cal
-            </Text>
-          <Text style={{ margin: 3, fontSize: 11 }}>
-            <Text style={{ fontWeight: '600' }}>
+            </CustomText>
+          <CustomText style={styles.textContainerStyle}>
+            <CustomText style={{ fontWeight: '600' }}>
               Protein:
-            </Text> {item.protein} g</Text>
-          <Text style={{ margin: 3, fontSize: 11 }}>
-            <Text style={{ fontWeight: '600' }}>
+            </CustomText> {item.protein} g</CustomText>
+          <CustomText style={styles.textContainerStyle}>
+            <CustomText style={{ fontWeight: '600' }}>
               Total Fat:
-              </Text> {item.fat} g
-            </Text>
+              </CustomText> {item.fat} g
+            </CustomText>
         </Animated.View>
       </>
     </TouchableOpacity>
@@ -104,7 +109,7 @@ const styles = StyleSheet.create({
   },
   cardContainerFront: {
     flex: 1,
-    marginHorizontal: 20,
+    marginHorizontal: 15,
     marginBottom: 20,
     backgroundColor: "#fff",
     backfaceVisibility: "hidden"
@@ -121,5 +126,6 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.2,
     shadowRadius: 1,
     elevation: 3
-  }
+  },
+  textContainerStyle: { margin: 3, fontSize: 11 }
 });

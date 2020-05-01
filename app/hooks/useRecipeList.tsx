@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 export const useRecipeList = () => {
-    const [recipeList, setRecipeList] = useState(null);
+    const [recipeList, setRecipeList] = useState([]);
     const [error, setError] = useState(null);
     useEffect(() => {
 
@@ -10,7 +10,7 @@ export const useRecipeList = () => {
                 const recipes: any = await fetch("http://127.0.0.1:5000/api/recipes");
                 console.log("recipes")
                 console.log(recipes)
-                setRecipeList(await recipes.json() || null);
+                setRecipeList(await recipes.json() || []);
             } catch(e) {
                 setError(e.message);
             }

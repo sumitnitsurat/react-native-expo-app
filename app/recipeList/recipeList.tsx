@@ -1,19 +1,27 @@
 import React, { useEffect, useState } from 'react';
 
 import { StyleSheet, Text, View, SafeAreaView, FlatList, Animated, TouchableWithoutFeedback, TouchableOpacity } from 'react-native';
-import { Card, ListItem, Button, Image, Overlay } from 'react-native-elements';
+import { Card, ListItem, Button, Image, Overlay, Badge } from 'react-native-elements';
 import {RecipeCard} from "./recipeCard";
 import {RecipeOverlay} from "./recipeOverlay"
 import {useRecipeList} from "../hooks/useRecipeList";
+import {useFilteredRecipeList} from "../hooks/useFilteredRecipeList";
 import { users } from "../demo";
 import { SearchBar } from 'react-native-elements';
 
+export enum FILTER_TYPE {
+  "SEARCH",
+  "BADGE"
+}
 
 export const RecipeList = () => {
   const [overlayVisible, setOverlayVisibility] = useState(false);
   const [overlayData, setOverlayData] = useState(null);
-  const [searchText, setSearchText] = useState("")
-    const {recipeList, error} = useRecipeList();
+  const [filterType, setFilterType] = useState(FILTER_TYPE.BADGE);
+  const [searchText, setSearchText] = useState("");
+  const [selectedBadge, setSelectedBadge] = useState("all");
+  const {recipeList, error} = useRecipeList();
+  const {filteredRecipeList} = useFilteredRecipeList({ filter: searchText || selectedBadge, type: filterType, recipeList });
 
    const setOverlay = (item: any) => { 
       setOverlayData(item)
@@ -25,20 +33,52 @@ export const RecipeList = () => {
     setOverlayVisibility(!overlayVisible);
    }
 
+   const onSearchFilter = (val: string) => {
+    setSearchText(val); 
+    setFilterType(!!val ? FILTER_TYPE.SEARCH : FILTER_TYPE.BADGE);
+   }
+
   return (
     <SafeAreaView style={styles.container}>
       <SearchBar
-        placeholder="Type Here..."
-        onChangeText={setSearchText}
+        placeholder="Search recipe Here..."
+        inputContainerStyle={{backgroundColor: "transparent"}}
+        onChangeText={onSearchFilter}
         value={searchText}
         lightTheme
         round
-        containerStyle={{backgroundColor: "transparent", borderBottomWidth: 0, borderTopWidth: 0, marginTop: 20, marginLeft:20, marginRight: 20 }}
+        containerStyle={{ backgroundColor: "transparent", borderBottomWidth: 0, borderTopWidth: 0, margin: 10 }}
       />
+      <View style={{flexDirection: "row", justifyContent: "space-around"}}>
+        <Badge 
+          value="Show All" 
+          onPress={() => { setSelectedBadge("all"); setFilterType(FILTER_TYPE.BADGE)}}
+          containerStyle={selectedBadge === "all" ? styles.badgeSelected : styles.badgeContainer} 
+          badgeStyle={styles.badge} 
+          textStyle={selectedBadge === "all" ? styles.badgeTextSelected : styles.badgeText} />
+        <Badge 
+          value="Recipe" 
+          onPress={() => { setSelectedBadge("recipe"); setFilterType(FILTER_TYPE.BADGE)}}
+          containerStyle={selectedBadge === "recipe" ? styles.badgeSelected : styles.badgeContainer}
+          badgeStyle={styles.badge}  
+          textStyle={selectedBadge === "recipe" ? styles.badgeTextSelected : styles.badgeText} />
+        <Badge 
+          value="Drinks" 
+          onPress={() => { setSelectedBadge("drinks"); setFilterType(FILTER_TYPE.BADGE)}}
+          containerStyle={selectedBadge === "drinks" ? styles.badgeSelected : styles.badgeContainer}
+          badgeStyle={styles.badge}  
+          textStyle={selectedBadge === "drinks" ? styles.badgeTextSelected : styles.badgeText} />
+        <Badge
+         value="Raw Food"
+         onPress={() => { setSelectedBadge("poultry, plants"); setFilterType(FILTER_TYPE.BADGE)}}
+         containerStyle={selectedBadge === "poultry, plants" ? styles.badgeSelected : styles.badgeContainer}
+         badgeStyle={styles.badge}  
+         textStyle={selectedBadge === "poultry, plants" ? styles.badgeTextSelected : styles.badgeText} />
+      </View>
       <FlatList
-        data={recipeList || []}
+        data={filteredRecipeList || []}
         renderItem={({ item }) => <RecipeCard item={item} setOverlayAction={setOverlay} />}
-        keyExtractor={item => item.id}
+        keyExtractor={item => item.name}
         numColumns={2}
         style={{ flex: 1 }}
         contentContainerStyle={{ paddingVertical: 20}}
@@ -77,5 +117,10 @@ const styles = StyleSheet.create({
     position: "absolute",
     top: 0,
     alignItems: "flex-start"
-  }
+  },
+  badgeContainer: {borderWidth: 1, borderRadius: 20, backgroundColor: "#ffffff", borderColor: "#A52A2A", padding: 3, margin: 10},
+  badge: {backgroundColor: "transparent", borderWidth: 0 },
+  badgeSelected: {borderWidth: 1, borderRadius: 20, backgroundColor: "#A52A2A", borderColor: "#A52A2A", padding: 3, margin: 10},
+  badgeText: {color: "#A52A2A"},
+  badgeTextSelected: {color: "#ffffff", fontWeight: "500"}
 });

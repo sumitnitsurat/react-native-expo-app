@@ -3,7 +3,6 @@ import * as React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Icon } from "react-native-elements";
-GLOBAL.XMLHttpRequest = GLOBAL.originalXMLHttpRequest || GLOBAL.XMLHttpRequest;
 
 import { RecipeList } from "./recipeList";
 import { BmrCalculator } from "./bmrCalculator";
@@ -47,7 +46,7 @@ export const App = () => {
                     }
                 })}
                 tabBarOptions={{
-                    activeTintColor: "tomato",
+                    activeTintColor: "#A52A2A",
                     inactiveTintColor: "gray"
                 }}
             >
