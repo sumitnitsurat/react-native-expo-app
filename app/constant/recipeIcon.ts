@@ -16,4 +16,6 @@ export const RecipeIcon: Icon = {
     10: require("../images/plants/gn/raw_spinach.jpg"),
     11: require("../images/drinks/tw/green_bubble_tea.jpg"),
     12: require("../images/drinks/tw/bubble_tea.jpg"),
+    13: require("../images/recipe/sg/sliced_fish_soup.jpg"),
+    14: require("../images/recipe/sg/chicken_fried_rice.jpg"),
 }

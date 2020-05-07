@@ -59,6 +59,9 @@ PODS:
     - Folly (= 2018.10.22.00)
     - RCTRequired (= 0.61.5)
     - React-Core (= 0.61.5)
+  - RCTYouTube (2.0.1):
+    - React
+    - YoutubePlayer-in-WKWebView (~> 0.3.1)
   - React (0.61.5):
     - React-Core (= 0.61.5)
     - React-Core/DevSupport (= 0.61.5)
@@ -257,9 +260,11 @@ PODS:
     - React
   - RNGestureHandler (1.6.1):
     - React
-  - RNReanimated (1.7.1):
+  - RNReanimated (1.8.0):
     - React
   - RNScreens (2.2.0):
+    - React
+  - RNShare (3.3.0):
     - React
   - UMAppLoader (1.0.1)
   - UMBarCodeScannerInterface (5.1.0)
@@ -279,6 +284,7 @@ PODS:
   - UMSensorsInterface (5.1.0)
   - UMTaskManagerInterface (5.1.0)
   - Yoga (1.14.0)
+  - YoutubePlayer-in-WKWebView (0.3.4)
 
 DEPENDENCIES:
   - DoubleConversion (from `../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec`)
@@ -300,6 +306,7 @@ DEPENDENCIES:
   - glog (from `../node_modules/react-native/third-party-podspecs/glog.podspec`)
   - RCTRequired (from `../node_modules/react-native/Libraries/RCTRequired`)
   - RCTTypeSafety (from `../node_modules/react-native/Libraries/TypeSafety`)
+  - RCTYouTube (from `../node_modules/react-native-youtube`)
   - React (from `../node_modules/react-native/`)
   - React-Core (from `../node_modules/react-native/`)
   - React-Core/DevSupport (from `../node_modules/react-native/`)
@@ -325,6 +332,7 @@ DEPENDENCIES:
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
   - RNReanimated (from `../node_modules/react-native-reanimated`)
   - RNScreens (from `../node_modules/react-native-screens`)
+  - RNShare (from `../node_modules/react-native-share`)
   - UMAppLoader (from `../node_modules/unimodules-app-loader/ios`)
   - UMBarCodeScannerInterface (from `../node_modules/unimodules-barcode-scanner-interface/ios`)
   - UMCameraInterface (from `../node_modules/unimodules-camera-interface/ios`)
@@ -343,6 +351,7 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - boost-for-react-native
+    - YoutubePlayer-in-WKWebView
 
 EXTERNAL SOURCES:
   DoubleConversion:
@@ -383,6 +392,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/Libraries/RCTRequired"
   RCTTypeSafety:
     :path: "../node_modules/react-native/Libraries/TypeSafety"
+  RCTYouTube:
+    :path: "../node_modules/react-native-youtube"
   React:
     :path: "../node_modules/react-native/"
   React-Core:
@@ -427,6 +438,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-reanimated"
   RNScreens:
     :path: "../node_modules/react-native-screens"
+  RNShare:
+    :path: "../node_modules/react-native-share"
   UMAppLoader:
     :path: "../node_modules/unimodules-app-loader/ios"
   UMBarCodeScannerInterface:
@@ -458,7 +471,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   boost-for-react-native: 39c7adb57c4e60d6c5479dd8623128eb5b3f0f2c
-  DoubleConversion: 5805e889d232975c086db112ece9ed034df7a0b2
+  DoubleConversion: 877725bddf3a9bc11ffe9cc3939222a6a762ef64
   EXConstants: 9f18e9ef229706394f41735d9c7f309d479b36c0
   EXErrorRecovery: 88541714d9bbf8a823f4ee0b7078a92d3e0e42d2
   EXFileSystem: b82693d78de152efe10a77d4aac781f782e10916
@@ -473,10 +486,11 @@ SPEC CHECKSUMS:
   EXWebBrowser: d720fa61da68fbd174f3655f1e9a848cd08fffc3
   FBLazyVector: aaeaf388755e4f29cd74acbc9e3b8da6d807c37f
   FBReactNativeSpec: 118d0d177724c2d67f08a59136eb29ef5943ec75
-  Folly: 30e7936e1c45c08d884aa59369ed951a8e68cf51
-  glog: 1f3da668190260b06b429bb211bfbee5cd790c28
+  Folly: 09a68b9fdc13701774f4747cfa4398f87e0e56ee
+  glog: 9f5faaaabd591cf93bb61ba0494376b4cda79f74
   RCTRequired: b153add4da6e7dbc44aebf93f3cf4fcae392ddf1
   RCTTypeSafety: 9aa1b91d7f9310fc6eadc3cf95126ffe818af320
+  RCTYouTube: 7ff7d42f5ed42d185198681e967fd2c2b661375d
   React: b6a59ef847b2b40bb6e0180a97d0ca716969ac78
   React-Core: 688b451f7d616cc1134ac95295b593d1b5158a04
   React-CoreModules: d04f8494c1a328b69ec11db9d1137d667f916dcb
@@ -497,8 +511,9 @@ SPEC CHECKSUMS:
   ReactCommon: 198c7c8d3591f975e5431bec1b0b3b581aa1c5dd
   RNCMaskedView: 5dba3cb07493765fb66156c83c3dd281ca709a48
   RNGestureHandler: 8f09cd560f8d533eb36da5a6c5a843af9f056b38
-  RNReanimated: 4e102df74a9674fa943e05f97f3362b6e44d0b48
+  RNReanimated: 955cf4068714003d2f1a6e2bae3fb1118f359aff
   RNScreens: 812b79d384e2bea7eebc4ec981469160d4948fd5
+  RNShare: fea1801315aa8875d6db73a4010b14afcd568765
   UMAppLoader: 83885655be9ce3e5b3684d20f9973da67b78b3a9
   UMBarCodeScannerInterface: aa3409ab9d108866e55c09ad0292e4a6c08a7775
   UMCameraInterface: 9d5da92c521e0af7815afbf77ea19bd0312b4928
@@ -513,6 +528,7 @@ SPEC CHECKSUMS:
   UMSensorsInterface: fc92b1f92202166284ca0f95e0acc1daab5d16a8
   UMTaskManagerInterface: 4e6c4c34a89512e2225d336154df1cb689226a29
   Yoga: f2a7cd4280bfe2cca5a7aed98ba0eb3d1310f18b
+  YoutubePlayer-in-WKWebView: af2f5929fc78882d94bfdfeea999b661b78d9717
 
 PODFILE CHECKSUM: c17f3193a9638bf717fd235cba3241bf5a91ea91
 

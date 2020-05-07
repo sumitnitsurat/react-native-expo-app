@@ -99,6 +99,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>RCTYouTube.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>RNCMaskedView.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -115,6 +120,11 @@
 			<false/>
 		</dict>
 		<key>RNScreens.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>RNShare.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -270,6 +280,11 @@
 			<false/>
 		</dict>
 		<key>Yoga.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>YoutubePlayer-in-WKWebView.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>

@@ -7,7 +7,7 @@ export const useRecipeList = () => {
 
         const fetchRecipeList = async () => {
             try {
-                const recipes: any = await fetch("http://127.0.0.1:5000/api/recipes");
+                const recipes: any = await fetch("http://localhost:5000/api/recipes");
                 console.log("recipes")
                 console.log(recipes)
                 setRecipeList(await recipes.json() || []);

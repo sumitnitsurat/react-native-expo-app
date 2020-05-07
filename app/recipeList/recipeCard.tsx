@@ -62,7 +62,7 @@ export const RecipeCard = ({ item, setOverlayAction }: { item: any, setOverlayAc
             source={RecipeIcon[item.id]}
           />
           <View style={{ flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center' }}>
-            <CustomText style={{ textAlign: "center", marginTop: 8, fontSize: 15, color: "#A52A2A" }}>{item.name}</CustomText>
+            <CustomText style={{ textAlign: "center", marginTop: 8, fontSize: 15, color: "#072F49" }}>{item.name}</CustomText>
           </View>
           <View style={{flex: 1, flexDirection: "row", padding: 5, justifyContent: "space-around"}}>
           <Image

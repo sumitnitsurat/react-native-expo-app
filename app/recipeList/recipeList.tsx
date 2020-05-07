@@ -118,9 +118,9 @@ const styles = StyleSheet.create({
     top: 0,
     alignItems: "flex-start"
   },
-  badgeContainer: {borderWidth: 1, borderRadius: 20, backgroundColor: "#ffffff", borderColor: "#A52A2A", padding: 3, margin: 10},
+  badgeContainer: {borderWidth: 1, borderRadius: 20, backgroundColor: "#ffffff", borderColor: "#072F49", padding: 3, margin: 10},
   badge: {backgroundColor: "transparent", borderWidth: 0 },
-  badgeSelected: {borderWidth: 1, borderRadius: 20, backgroundColor: "#A52A2A", borderColor: "#A52A2A", padding: 3, margin: 10},
-  badgeText: {color: "#A52A2A"},
-  badgeTextSelected: {color: "#ffffff", fontWeight: "500"}
+  badgeSelected: {borderWidth: 1, borderRadius: 20, backgroundColor: "#072F49", borderColor: "#072F49", padding: 3, margin: 10},
+  badgeText: {color: "#072F49"},
+  badgeTextSelected: {color: "#BFBF06", fontWeight: "500"}
 });

@@ -1,1 +1,1 @@
-export * from "./bmrCalculator";
+export * from "./bmrCalculatorView";
