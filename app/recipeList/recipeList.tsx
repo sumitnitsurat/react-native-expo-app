@@ -68,6 +68,12 @@ export const RecipeList = () => {
           containerStyle={selectedBadge === "drinks" ? styles.badgeSelected : styles.badgeContainer}
           badgeStyle={styles.badge}  
           textStyle={selectedBadge === "drinks" ? styles.badgeTextSelected : styles.badgeText} />
+        <Badge 
+          value="Fruits" 
+          onPress={() => { setSelectedBadge("fruits"); setFilterType(FILTER_TYPE.BADGE)}}
+          containerStyle={selectedBadge === "fruits" ? styles.badgeSelected : styles.badgeContainer}
+          badgeStyle={styles.badge}  
+          textStyle={selectedBadge === "fruits" ? styles.badgeTextSelected : styles.badgeText} />
         <Badge
          value="Raw Food"
          onPress={() => { setSelectedBadge("poultry, plants"); setFilterType(FILTER_TYPE.BADGE)}}

@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, SafeAreaView, Dimensions,ScrollView } from "rea
 import { TabView, SceneMap, TabBar } from 'react-native-tab-view';
 import {BmrCalculator} from "./bmrCalculator";
 import {BmiCalculator} from "./bmiCalculator";
+import {MacroCalculator} from "./macroCalculator";
 
 const initialLayout = { width: Dimensions.get('window').width };
 
@@ -25,7 +26,7 @@ export const BmrCalculatorView = () => {
 
     const renderScene = SceneMap({
         first: BmrCalculator,
-        second: BmiCalculator,
+        second: MacroCalculator,
         third: BmiCalculator,
       });
 

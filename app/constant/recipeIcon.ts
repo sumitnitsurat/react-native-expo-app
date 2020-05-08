@@ -18,4 +18,8 @@ export const RecipeIcon: Icon = {
     12: require("../images/drinks/tw/bubble_tea.jpg"),
     13: require("../images/recipe/sg/sliced_fish_soup.jpg"),
     14: require("../images/recipe/sg/chicken_fried_rice.jpg"),
+    15: require("../images/fruits/gn/apple.jpg"),
+    16: require("../images/fruits/gn/banana.jpg"),
+    17: require("../images/fruits/gn/grapes.jpg"),
+    18: require("../images/fruits/gn/orange.jpg"),
 }

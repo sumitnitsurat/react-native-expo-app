@@ -1,8 +1,10 @@
 import React, { useState } from "react";
-import { View, Text, StyleSheet, SafeAreaView,  } from "react-native";
+import { View, Text, StyleSheet  } from "react-native";
 import { Slider, Button, Icon, CheckBox, Tile } from 'react-native-elements';
 import {CustomText} from "../common/CustomText";
+import Picker from 'react-native-picker-select';
 
+const exerciseFactor = {"no": 1, "sedentary": 1.2, "lightactive": 1.375, "modactive": 1.55, "veryactive": 1.725, "extraactive": 1.9};
 
 export const BmrCalculator = () => {
     const [age, setAge] = useState(20);
@@ -12,13 +14,13 @@ export const BmrCalculator = () => {
     const [gender, setGender] = useState("male");
     const [userBMR, setBMR] = useState(0);
     const [userTDEE, setTDEE] = useState(0);
+    const [selectedValue, setSelectedValue] = useState("no");
 
     const decimalTwoPoints = (value: number) => Math.round(value * 100) / 100;
 
     const calculateBMR = () => {
-        const totalWalkCalories = walk*60*(.03 * weight*1/0.45) / 7;
         const bmr = (10 * weight + 6.25 * height - 5 * age) + (gender === "male" ? 5 : -161);
-        const tdee = bmr + totalWalkCalories;
+        const tdee = bmr * exerciseFactor[selectedValue];
         const preciseBmr = decimalTwoPoints(bmr);
         setBMR(preciseBmr);
         setTDEE(decimalTwoPoints(tdee));
@@ -89,17 +91,19 @@ export const BmrCalculator = () => {
                     <CustomText style={{ fontWeight: "600" }}>Age: {age} years</CustomText>
                 </View>
                 <View style={{ padding: 10 }}>
-                    <Slider
-                        value={walk}
-                        maximumValue={50}
-                        step={1}
-                        thumbStyle={styles.thumb}
-                        trackStyle={{ height: 10 }}
-                        minimumTrackTintColor="#043745"
-                        maximumTrackTintColor="#0488AC"
-                        onValueChange={value => setWalk(value)}
-                    />
-                    <CustomText style={{ fontWeight: "600" }}>Walking: {walk} hrs/week</CustomText>
+                    <Picker
+                        value={selectedValue}
+                        style={{viewContainer: {borderWidth: 1, padding: 8, borderColor: "#043745"}}}
+                        onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}
+                        items={[{label:"No Exercise", value:"no"}, 
+                        {label:"Limited Exercise", value:"sedentary"},
+                        {label:"Lightly Active (less than three days a week)", value:"lightactive"},
+                        {label:"Moderately Exercise (most days of the week)", value:"modactive"},
+                        {label:"Very Active (Hard exercise everyday)", value:"veryactive"},
+                        {label:"Extra Active(Strenuous exercise two or more times a day)", value:"extraactive"}
+                    ]}
+                    >
+                    </Picker>
                 </View>
             </View>
             <View style={{ padding: 10, marginTop: 20 }}>
