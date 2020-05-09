@@ -36,6 +36,7 @@ export const BmrCalculator = () => {
                     checkedIcon='dot-circle-o'
                     uncheckedIcon='circle-o'
                     containerStyle={{backgroundColor:'transparent'}}
+                    checkedColor="#043745"
                     onPress={() => setGender('male')}
                     checked={gender === 'male'}
                     />
@@ -44,6 +45,7 @@ export const BmrCalculator = () => {
                     checkedIcon='dot-circle-o'
                     uncheckedIcon='circle-o'
                     containerStyle={{backgroundColor:'transparent'}}
+                    checkedColor="#043745"
                     onPress={() => setGender('female')}
                     checked={gender === 'female'}
                     />
@@ -116,11 +118,52 @@ export const BmrCalculator = () => {
                     buttonStyle={{ backgroundColor: "#072F49" }}
                 />
             </View>
-            <View style={{margin: 10}}>
-            {!!userBMR && <CustomText style={{fontSize: 26}}><CustomText style={{fontWeight: '600'}}>BMR:</CustomText> {userBMR} calories/day</CustomText>}
+            {!!userBMR && !!userTDEE && <View style={{flexDirection: "row"}}>
+             <View style={[styles.bmrValue, styles.boxShadow]}>
+                        <Icon
+                        type="font-awesome"
+                        name="fire"
+                        size={20}
+                        color="#F04707"
+                        containerStyle={{marginRight: 5}}
+                        />
+                        
+                    <View style={{flexDirection: "column", alignItems: "center"}}>
+                        <CustomText style={{fontWeight: '600'}}>BMR</CustomText> 
+                        <CustomText style={{fontSize: 16}}>{userBMR} cal/day</CustomText>
+                    </View>
+                </View>
+                <View style={[styles.bmrValue, styles.boxShadow]}>
+                    <Icon
+                        type="font-awesome"
+                        name="bolt"
+                        size={20}
+                        color="#F04707"
+                        containerStyle={{marginRight: 5}}
+                        />
+                    <View style={{flexDirection: "column", alignItems: "center"}}>
+                        <CustomText style={{fontWeight: '600'}}>TDEE</CustomText> 
+                        <CustomText style={{fontSize: 16}}>{userTDEE} cal/day</CustomText>
+                    </View>
+                </View>
+            </View>}
+            <View style={[styles.definition, styles.boxShadow]}>
+            <Icon
+                type="font-awesome"
+                name="info-circle"
+                size={20}
+                color="#072F49"
+            />
+                <CustomText style={{paddingLeft: 5, paddingRight: 10}}> <CustomText style={{fontWeight: "bold"}}>BMR(Basal Metabolic Rate)</CustomText> is the number of calories required to keep your body functioning at rest. </CustomText>
             </View>
-            <View style={{margin: 10}}>
-            {!!userTDEE && <CustomText style={{fontSize: 26}}><CustomText style={{fontWeight: '600'}}>TDEE:</CustomText> <CustomText>{userTDEE} calories/day</CustomText></CustomText>}
+            <View style={[styles.definition, styles.boxShadow]}>
+                <Icon
+                    type="font-awesome"
+                    name="info-circle"
+                    size={20}
+                    color="#072F49"
+                />
+                <CustomText style={{paddingLeft: 5, paddingRight: 10}}><CustomText style={{fontWeight: "bold"}}>TDEE(Total Daily Energy Expenditure)</CustomText> is the number of calories you burn per day when exercise is taken into account. </CustomText>
             </View>
             </>);
 }
@@ -135,5 +178,26 @@ const styles = StyleSheet.create({
     },
     thumb: {
         height: 30, width: 30, borderRadius: 50, borderWidth: 10, borderColor: "#BFBF06", backgroundColor: "#072F49" 
+    },
+    definition: { flexDirection: "row", marginLeft: 15, marginRight: 15, marginTop: 10, borderWidth: 1, borderRadius: 10, padding: 10, alignItems: "flex-start"},
+    bmrValue: { 
+        margin: 10, 
+        flex: 1, 
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: "center",
+        borderWidth: 1, 
+        borderRadius: 55,
+        padding: 5
+    },
+    boxShadow: {shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 4,
+        },
+        shadowOpacity: 0.30,
+        shadowRadius: 4.65,
+        
+        elevation: 8,
     }
   });

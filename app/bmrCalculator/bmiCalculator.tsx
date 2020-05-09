@@ -79,8 +79,28 @@ export const BmiCalculator = () => {
                     buttonStyle={{ backgroundColor: "#072F49" }}
                 />
             </View>
-            <View style={{ margin: 10 }}>
-                {!!userBMI && <CustomText style={{ fontSize: 26 }}><CustomText style={{ fontWeight: '600' }}>BMI:</CustomText> <CustomText style={{ color: bmiTextColor }}>{userBMI}</CustomText></CustomText>}
+            {!!userBMI && <View style={[styles.bmiValue, styles.boxShadow]}>
+                        <Icon
+                        type="font-awesome"
+                        name="male"
+                        size={30}
+                        color={bmiTextColor}
+                        containerStyle={{margin: 15}}
+                        />
+                        
+                    <View style={{flexDirection: "column", alignItems: "center"}}>
+                        <CustomText style={{fontWeight: '600'}}>BMI</CustomText> 
+                        <CustomText style={{fontSize: 22}}>{userBMI} kg/m2</CustomText>
+                    </View>
+                </View>}
+            <View style={[styles.definition, styles.boxShadow]}>
+                <Icon
+                    type="font-awesome"
+                    name="info-circle"
+                    size={20}
+                    color="#072F49"
+                />
+                <CustomText style={{paddingLeft: 5, paddingRight:10}}><CustomText style={{fontWeight: "bold"}}>BMI(Body Mass Index)</CustomText> is an indicator of body fat based on height and weight of adult men and women.</CustomText>
             </View>
             <BmiIndicator />
         </>);
@@ -95,6 +115,26 @@ const styles = StyleSheet.create({
         backgroundColor: "#fff"
     },
     thumb: {
-        height: 30, width: 30, borderRadius: 50, borderWidth: 10, borderColor: "#072F49", backgroundColor: "#fff"
+        height: 30, width: 30, borderRadius: 50, borderWidth: 10, borderColor: "#BFBF06", backgroundColor: "#072F49"
+    },
+    definition: { flexDirection: "row", marginLeft: 15, marginRight: 15, marginTop: 10, borderWidth: 1, borderRadius: 15, padding: 10, alignItems: "flex-start"},
+    bmiValue: { 
+        margin: 10, 
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: "center",
+        borderWidth: 1, 
+        borderRadius: 55,
+        padding: 5
+    },
+    boxShadow: {shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 4,
+        },
+        shadowOpacity: 0.30,
+        shadowRadius: 4.65,
+        
+        elevation: 6,
     }
 });

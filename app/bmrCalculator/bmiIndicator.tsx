@@ -5,7 +5,7 @@ import {CustomText} from "../common/CustomText";
 export const BmiIndicator = () => (
     <>
     <CustomText style={{fontSize: 18, padding: 5, alignSelf: "center", fontWeight: "800"}}>BMI Indicator</CustomText>
-    <View style={{flexDirection: "row", padding: 5}}>
+    <View style={[{flexDirection: "row", padding: 5}, styles.boxShadow]}>
         <View style={[styles.bmiTitleContainer, styles.bmiUnderWeightColor]}>
             <CustomText style={{color: "#fff", fontSize: 10, fontWeight: "600"}}>Underweight </CustomText>
             <CustomText style={{color: "#fff", fontWeight: "500"}}>{'<'} 18.5</CustomText>
@@ -47,5 +47,16 @@ const styles = StyleSheet.create({
     },
     bmiObeseColor: {
         backgroundColor: "#F33A2B"
+    },
+    boxShadow: {
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 4,
+        },
+        shadowOpacity: 0.30,
+        shadowRadius: 4.65,
+        
+        elevation: 8,
     }
   });
